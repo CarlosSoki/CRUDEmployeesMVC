@@ -1,0 +1,52 @@
+﻿@model IEnumerable<CRUDEmployeesMVC.tabla_Empleados>
+
+@{
+    ViewBag.Title = "Lista Empleados";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+<hr />
+<p>
+    @Html.ActionLink(" Crear Empleado", "Create", null, new { style = "font-size:15px", @class = "btn btn-primary bi bi-person-plus-fill" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombres)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Apellidos)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Salario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rol)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombres)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Apellidos)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Salario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rol)
+        </td>
+        <td>
+            @Html.ActionLink(" ", "Edit", new { id = item.ID }, new { @class = "btn btn-warning bi bi-pencil-square" , @title = "Editar" })
+            @Html.ActionLink(" ", "Details", new { id = item.ID }, new { @class = "btn btn-success bi bi-person-lines-fill", @title = "Detalles" })
+            @Html.ActionLink(" ", "Delete", new { id = item.ID }, new { @class = "btn btn-danger bi bi-trash-fill", @title = "Eliminar" })
+        </td>
+    </tr>
+}           
+
+</table>
